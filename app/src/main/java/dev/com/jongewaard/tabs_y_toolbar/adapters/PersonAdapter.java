@@ -1,15 +1,17 @@
 package dev.com.jongewaard.tabs_y_toolbar.adapters;
 
+
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import dev.com.jongewaard.tabs_y_toolbar.models.Person;
+import dev.com.jongewaard.tabs_y_toolbar.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
