@@ -1,71 +1,83 @@
 package dev.com.jongewaard.tabs_y_toolbar.activities;
 
-
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.widget.Toast;
 
-import dev.com.jongewaard.tabs_y_toolbar.R;
-import dev.com.jongewaard.tabs_y_toolbar.adapter.PagerAdapter;
+import com.alejandro.seccion_07_tabs_lab.Adapters.ViewPagerAdapter;
+import com.alejandro.seccion_07_tabs_lab.Fragments.PersonListFragment;
+import com.alejandro.seccion_07_tabs_lab.Interfaces.OnPersonCreated;
+import com.alejandro.seccion_07_tabs_lab.Models.Person;
+import com.alejandro.seccion_07_tabs_lab.R;
 
+public class MainActivity extends AppCompatActivity implements OnPersonCreated {
 
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private ViewPagerAdapter adapter;
 
-public class MainActivity extends AppCompatActivity {
+    // Índice de posición de los fragments
+    public static final int PERSON_FORM_FRAGMENT = 0;
+    public static final int PERSON_LIST_FRAGMENT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setToolbar();
+        setTabLayout();
+        setViewPager();
+        setListenerTabLayout(viewPager);
+    }
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(myToolbar);
+    private void setToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
 
-        /* Tab Layout */
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+    private void setTabLayout() {
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout.addTab(tabLayout.newTab().setText("Form"));
+        tabLayout.addTab(tabLayout.newTab().setText("List"));
+    }
 
-        /* View Pager */
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager()
-                , tabLayout.getTabCount());
-
+    private void setViewPager() {
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), this, tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+    }
 
+    private void setListenerTabLayout(final ViewPager viewPager) {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override //cuando selecciono el Tab
+            @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Toast.makeText(MainActivity.this, "Selected " + tab.getText(), Toast.LENGTH_SHORT).show();
                 int position = tab.getPosition();
                 viewPager.setCurrentItem(position);
             }
 
-            @Override //cuando estaba activo y deja de estarlo
+            @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                Toast.makeText(MainActivity.this, "Unselected " + tab.getText(), Toast.LENGTH_SHORT).show();
-
             }
 
-            @Override //cuando selecciono el mismo Tab que estaba activo
+            @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                Toast.makeText(MainActivity.this, "Reselected " + tab.getText(), Toast.LENGTH_SHORT).show();
-
             }
         });
 
-     }
+    }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
+    public void createPerson(Person person) {
+        // Obtenemos el fragment deseado, ListFragment, a través de
+        // getSupportFragmentManager(), y posteriormente pasamos el índice de posición
+        // de dicho fragment
+        PersonListFragment fragment = (PersonListFragment) getSupportFragmentManager().getFragments().get(PERSON_LIST_FRAGMENT);
+        // Llamamos al método de nuestro fragment
+        fragment.addPerson(person);
+        // Movemos el viewpager hacia el ListFragment para ver la persona añadida en el listView
+        viewPager.setCurrentItem(PERSON_LIST_FRAGMENT);
     }
 }
