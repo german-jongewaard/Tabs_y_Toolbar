@@ -17,6 +17,10 @@ import dev.com.jongewaard.tabs_y_toolbar.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by german on 30-12-17.
+ */
+
 public class PersonListFragment extends Fragment {
 
     private List<Person> persons;

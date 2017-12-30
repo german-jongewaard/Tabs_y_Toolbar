@@ -10,6 +10,10 @@ import dev.com.jongewaard.tabs_y_toolbar.fragments.PersonListFragment;
 import static dev.com.jongewaard.tabs_y_toolbar.activities.MainActivity.PERSON_FORM_FRAGMENT;
 import static dev.com.jongewaard.tabs_y_toolbar.activities.MainActivity.PERSON_LIST_FRAGMENT;
 
+/**
+ * Created by german on 30-12-17.
+ */
+
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private int numberOfTabs;

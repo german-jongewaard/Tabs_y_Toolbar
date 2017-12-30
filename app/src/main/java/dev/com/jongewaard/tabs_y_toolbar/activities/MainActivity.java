@@ -11,7 +11,9 @@ import dev.com.jongewaard.tabs_y_toolbar.fragments.PersonListFragment;
 import dev.com.jongewaard.tabs_y_toolbar.interfaces.OnPersonCreated;
 import dev.com.jongewaard.tabs_y_toolbar.models.Person;
 import dev.com.jongewaard.tabs_y_toolbar.R;
-
+/**
+ * Created by german on 30-12-17.
+ */
 public class MainActivity extends AppCompatActivity implements OnPersonCreated {
 
     private TabLayout tabLayout;

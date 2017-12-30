@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 /**
- * Created by german on 27-12-17.
+ * Created by german on 30-12-17.
  */
 
 public class PersonAdapter extends BaseAdapter {
