@@ -1,12 +1,8 @@
-package dev.com.jongewaard.tabs_y_toolbar.adapter;
+package dev.com.jongewaard.tabs_y_toolbar.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
-import dev.com.jongewaard.tabs_y_toolbar.fragments.FirstFragment;
-import dev.com.jongewaard.tabs_y_toolbar.fragments.SecondFragment;
-import dev.com.jongewaard.tabs_y_toolbar.fragments.ThirdFragment;
 
 /**
  * Created by german on 27-12-17.
