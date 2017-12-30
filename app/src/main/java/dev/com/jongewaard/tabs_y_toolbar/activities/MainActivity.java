@@ -6,11 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import com.alejandro.seccion_07_tabs_lab.Adapters.ViewPagerAdapter;
-import com.alejandro.seccion_07_tabs_lab.Fragments.PersonListFragment;
-import com.alejandro.seccion_07_tabs_lab.Interfaces.OnPersonCreated;
-import com.alejandro.seccion_07_tabs_lab.Models.Person;
-import com.alejandro.seccion_07_tabs_lab.R;
+import dev.com.jongewaard.tabs_y_toolbar.adapters.ViewPagerAdapter;
+import dev.com.jongewaard.tabs_y_toolbar.fragments.PersonListFragment;
+import dev.com.jongewaard.tabs_y_toolbar.interfaces.OnPersonCreated;
+import dev.com.jongewaard.tabs_y_toolbar.models.Person;
+import dev.com.jongewaard.tabs_y_toolbar.R;
 
 public class MainActivity extends AppCompatActivity implements OnPersonCreated {
 
